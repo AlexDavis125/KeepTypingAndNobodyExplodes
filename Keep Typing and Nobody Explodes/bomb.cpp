@@ -235,8 +235,9 @@ void Bomb::defuseKeypad() const {
 }
 
 void Bomb::defuseSimonSays() const {
-    bool strikes;
-    char simon[10];
+    //Currently assumes no strikes acquired while solving
+    int strikes;
+    char simon[7];
     char color = 'z';
     int i = 0;
     
@@ -255,12 +256,90 @@ void Bomb::defuseSimonSays() const {
         
         switch (color) {
             case 'r':
-                if (serialVowel && strikes == 0) {
-                    
+                if (strikes == 0) {
+                    simon[i] = 'b';
                 }
+                if (strikes == 1) {
+                    if (serialVowel)
+                        simon[i] = 'y';
+                    else
+                        simon[i] = 'r';
+                }
+                if (strikes == 2) {
+                    if (serialVowel)
+                        simon[i] = 'g';
+                    else
+                        simon[i] = 'y';
+                }
+                i++;
+                cout << "Enter " << simon;
+                break;
             case 'b':
+                if (strikes == 0) {
+                    if (serialVowel)
+                        simon[i] = 'r';
+                    else
+                        simon[i] = 'y';
+                }
+                if (strikes == 1) {
+                    if (serialVowel)
+                        simon[i] = 'g';
+                    else
+                        simon[i] = 'b';
+                }
+                if (strikes == 2) {
+                    if (serialVowel)
+                        simon[i] = 'r';
+                    else
+                        simon[i] = 'g';
+                }
+                i++;
+                cout << "Enter " << simon;
+                break;
             case 'g':
+                if (strikes == 0) {
+                    if (serialVowel)
+                        simon[i] = 'y';
+                    else
+                        simon[i] = 'g';
+                }
+                if (strikes == 1) {
+                    if (serialVowel)
+                        simon[i] = 'b';
+                    else
+                        simon[i] = 'y';
+                }
+                if (strikes == 2) {
+                    if (serialVowel)
+                        simon[i] = 'y';
+                    else
+                        simon[i] = 'b';
+                }
+                i++;
+                cout << "Enter " << simon;
+                break;
             case 'y':
+                if (strikes == 0) {
+                    if (serialVowel)
+                        simon[i] = 'g';
+                    else
+                        simon[i] = 'r';
+                }
+                if (strikes == 1) {
+                    if (serialVowel)
+                        simon[i] = 'r';
+                    else
+                        simon[i] = 'g';
+                }
+                if (strikes == 2) {
+                    if (serialVowel)
+                        simon[i] = 'b';
+                    else
+                        simon[i] = 'r';
+                }
+                i++;
+                cout << "Enter " << simon;
+                break;
             case 'd':
                 break;
             default:

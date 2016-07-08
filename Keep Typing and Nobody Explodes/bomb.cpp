@@ -272,7 +272,7 @@ void Bomb::defuseSimonSays() const {
                         simon[i] = 'y';
                 }
                 i++;
-                cout << "Enter " << simon;
+                cout << "Enter " << simon << endl;
                 break;
             case 'b':
                 if (strikes == 0) {
@@ -294,7 +294,7 @@ void Bomb::defuseSimonSays() const {
                         simon[i] = 'g';
                 }
                 i++;
-                cout << "Enter " << simon;
+                cout << "Enter " << simon << endl;
                 break;
             case 'g':
                 if (strikes == 0) {
@@ -316,7 +316,7 @@ void Bomb::defuseSimonSays() const {
                         simon[i] = 'b';
                 }
                 i++;
-                cout << "Enter " << simon;
+                cout << "Enter " << simon << endl;
                 break;
             case 'y':
                 if (strikes == 0) {
@@ -338,7 +338,7 @@ void Bomb::defuseSimonSays() const {
                         simon[i] = 'r';
                 }
                 i++;
-                cout << "Enter " << simon;
+                cout << "Enter " << simon << endl;
                 break;
             case 'd':
                 break;
@@ -348,12 +348,187 @@ void Bomb::defuseSimonSays() const {
         }
     } while (color != 'd');
 }
+
 void Bomb::defuseWhosOnFirst() const {
     cout << "Defusing who's on first." << endl;
 }
 void Bomb::defuseMemory() const {
-    cout << "Defusing memory." << endl;
+    int pos[5];
+    char val[5];
+    char current[5];
+    int counter;
+    
+    //Stage 1
+    cout << "Enter the five digits in order: ";
+    for (int i = 0; i < 5; i++) {
+        current[i] = cin.get();
+    }
+    cin.ignore(MAX_CHAR, '\n');
+    
+    switch (current[0]) {
+        case '1':
+            cout << "Press label " << current[2] << endl;
+            pos[0] = 2;
+            val[0] = current[2];
+            break;
+        case '2':
+            cout << "Press label " << current[2] << endl;
+            pos[0] = 2;
+            val[0] = current[2];
+            break;
+        case '3':
+            cout << "Press label " << current[3] << endl;
+            pos[0] = 3;
+            val[0] = current[3];
+            break;
+        case '4':
+            cout << "Press label " << current[4] << endl;
+            pos[0] = 4;
+            val[0] = current[4];
+            break;
+        default:
+            cout << "Invalid entry." << endl << endl;
+            return;
+    }
+    
+    //Stage 2
+    cout << "Enter the five digits in order: ";
+    for (int i = 0; i < 5; i++) {
+        current[i] = cin.get();
+    }
+    cin.ignore(MAX_CHAR, '\n');
+    
+    switch (current[0]) {
+        case '1':
+            cout << "Press label 4" << endl;
+            counter = 1;
+            while (current[counter] != '4')
+                counter++;
+            pos[1] = counter;
+            val[1] = '4';
+            break;
+        case '2':
+            cout << "Press label " << current[pos[0]] << endl;
+            pos[1] = pos[0];
+            val[1] = current[pos[0]];
+            break;
+        case '3':
+            cout << "Press label " << current[1] << endl;
+            pos[1] = 1;
+            val[1] = current[1];
+            break;
+        case '4':
+            cout << "Press label " << current[pos[0]] << endl;
+            pos[1] = pos[0];
+            val[1] = current[pos[0]];
+            break;
+        default:
+            cout << "Invalid entry." << endl << endl;
+            return;
+    }
+    
+    //Stage 3
+    cout << "Enter the five digits in order: ";
+    for (int i = 0; i < 5; i++) {
+        current[i] = cin.get();
+    }
+    cin.ignore(MAX_CHAR, '\n');
+    
+    switch (current[0]) {
+        case '1':
+            cout << "Press label " << val[1] << endl;
+            counter = 1;
+            while (current[counter] != val[1])
+                counter++;
+            pos[2] = counter;
+            val[2] = val[1];
+            break;
+        case '2':
+            cout << "Press label " << val[0] << endl;
+            counter = 1;
+            while (current[counter] != val[0])
+                counter++;
+            pos[2] = counter;
+            val[2] = val[0];
+            break;
+        case '3':
+            cout << "Press label " << current[3] << endl;
+            pos[2] = 3;
+            val[2] = current[3];
+            break;
+        case '4':
+            cout << "Press label 4" << endl;
+            counter = 1;
+            while (current[counter] != '4')
+                counter++;
+            pos[2] = counter;
+            val[2] = '4';
+            break;
+        default:
+            cout << "Invalid entry." << endl << endl;
+            return;
+    }
+    
+    //Stage 4
+    cout << "Enter the five digits in order: ";
+    for (int i = 0; i < 5; i++) {
+        current[i] = cin.get();
+    }
+    cin.ignore(MAX_CHAR, '\n');
+    
+    switch (current[0]) {
+        case '1':
+            cout << "Press label " << current[pos[0]] << endl;
+            pos[3] = pos[0];
+            val[3] = current[pos[0]];
+            break;
+        case '2':
+            cout << "Press label " << current[1] << endl;
+            pos[3] = 1;
+            val[3] = current[1];
+            break;
+        case '3':
+            cout << "Press label " << current[pos[1]] << endl;
+            pos[3] = pos[1];
+            val[3] = current[pos[1]];
+            break;
+        case '4':
+            cout << "Press label " << current[pos[1]] << endl;
+            pos[3] = pos[1];
+            val[3] = current[pos[1]];
+            break;
+        default:
+            cout << "Invalid entry." << endl << endl;
+            return;
+    }
+    
+    //Stage 5
+    cout << "Enter the five digits in order: ";
+    for (int i = 0; i < 5; i++) {
+        current[i] = cin.get();
+    }
+    cin.ignore(MAX_CHAR, '\n');
+    
+    switch (current[0]) {
+        case '1':
+            cout << "Press label " << val[0] << endl;
+            break;
+        case '2':
+            cout << "Press label " << val[1] << endl;
+            break;
+        case '3':
+            cout << "Press label " << val[3] << endl;
+            break;
+        case '4':
+            cout << "Press label " << val[2] << endl;
+            break;
+        default:
+            cout << "Invalid entry." << endl << endl;
+            return;
+    }
+    
 }
+
 void Bomb::defuseMorseCode() const {
     cout << "Defusing morse code." << endl;
 }
